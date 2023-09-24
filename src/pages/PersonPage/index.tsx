@@ -11,6 +11,7 @@ const PersonPage: FC = () => {
   });
 
   const handleUpdatePerson = (updatedPerson: IPerson) => {
+    console.log(updatedPerson)
     setPerson(updatedPerson);
   };
 

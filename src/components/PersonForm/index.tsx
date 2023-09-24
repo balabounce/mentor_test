@@ -30,6 +30,7 @@ const PersonForm: FC<IPersonFormProps> = ({person, onUpdatePerson}) => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     onUpdatePerson({
       name,
       sex,

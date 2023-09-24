@@ -1,10 +1,10 @@
 import React from "react";
-import styles from './UndegroundMap.module.css';
-import { YMaps } from "@pbe/react-yandex-maps";
-import { Map } from "@pbe/react-yandex-maps";
-import { Placemark } from "@pbe/react-yandex-maps";
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const UndergroundMap = () => {
+  const coords = useSelector((state: RootState) => state.map.coords);
   return (
     <>
       <h3>My Undeground</h3>
@@ -12,13 +12,13 @@ const UndergroundMap = () => {
         <YMaps>
             <Map
               defaultState={{
-                center: [55.621727, 37.423560],
+                center: coords,
                 zoom: 14,
               }}
               width="100vw"
               height="100vh"
             >
-              <Placemark geometry={[55.621727, 37.423560]} />
+              <Placemark geometry={coords} />
             </Map>
           </YMaps>
       </div>
