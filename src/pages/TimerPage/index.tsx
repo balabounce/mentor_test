@@ -1,13 +1,14 @@
-import React from "react";
-import Timer from "../../components/Timer";
-
+import { Suspense, lazy, memo } from "react";
 const TimerPage = () => {
+  const Timer = lazy(() => import('../../components/Timer'));
   
   return (
     <>
-      <Timer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Timer />
+      </Suspense>
     </>
   )
 };
 
-export default TimerPage;
+export default memo(TimerPage);

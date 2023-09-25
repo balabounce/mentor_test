@@ -1,12 +1,15 @@
-import React, { FC } from "react";
-import UndergroundMap from "../../components/UndergroundMap";
+import { FC, Suspense, lazy, memo } from "react";
 
 const UndergroundMapPage: FC = () => {
+  const UndergroundMap = lazy(() => import('../../components/UndergroundMap'));
+  
   return (
     <>
-      <UndergroundMap />
+      <Suspense fallback={<div>Loading...</div>}>
+        <UndergroundMap />
+      </Suspense>
     </>
   )
 };
 
-export default UndergroundMapPage;
+export default memo(UndergroundMapPage);

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../app/store";
 import { setTime } from "../../app/reducers/timerSlice";

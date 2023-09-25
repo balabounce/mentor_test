@@ -1,6 +1,5 @@
-import React, { FC, useState } from "react";
+import { FC, Suspense, lazy, memo, useState } from "react";
 import { IPerson } from "../../components/PersonForm/types";
-import PersonForm from "../../components/PersonForm";
 
 const PersonPage: FC = () => {
   const [person, setPerson] = useState({
@@ -9,19 +8,21 @@ const PersonPage: FC = () => {
     age: 24,
     occupation: 'Frontend Developer',
   });
+  const PersonForm = lazy(() => import('../../components/PersonForm'));
 
   const handleUpdatePerson = (updatedPerson: IPerson) => {
-    console.log(updatedPerson)
     setPerson(updatedPerson);
   };
-
+  
   return (
     <>
       <h1>About me</h1>
-      <PersonForm person={person} onUpdatePerson={handleUpdatePerson} /> 
+      <Suspense fallback={<div>Loading...</div>}>
+        <PersonForm person={person} onUpdatePerson={handleUpdatePerson}/>
+      </Suspense>
     </>
   );
 
 }; 
 
-export default PersonPage;
+export default memo(PersonPage);

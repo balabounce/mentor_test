@@ -1,4 +1,3 @@
-import React from "react";
 import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
